@@ -6,19 +6,30 @@ export default function App() {
 
   const [sswd, setSswd] = useState('D');
   const [ob, setOb] = useState('D');
+  const [mobileApps, setMobileApps] = useState('D');
+  const [digitalMarketing, setDigitalMarketing] = useState('D');
+  const [ooad, setOoad] = useState('D');
+  const [financialManagement, setFinancialManagement] = useState('D');
 
   var gpa = 0;
   var credits = 5;
-  var totalPossibleCredits = 10;
+  var totalPossibleCredits = 30;
   var totalGradeScores = 0;
 
-  function clickMe() {
-    alert("this is the click me button"); //alert for web
-    Alert.alert("this is the click me button"); //alert for phone
+ function clickMe() {
+  alert("this is the click me button"); //alert for web
+  Alert.alert("this is the click me button"); //alert for phone
 
-    totalGradeScores = gradePoints[sswd] * credits + gradePoints[ob] * credits;
-    gpa = totalGradeScores / totalPossibleCredits;
-    alert("Your GPA is " + gpa);
+  totalGradeScores = gradePoints[sswd] * credits;
+  totalGradeScores += gradePoints[ob] * credits;
+  totalGradeScores += gradePoints[mobileApps] * credits;
+  totalGradeScores += gradePoints[digitalMarketing] * credits;
+  totalGradeScores += gradePoints[ooad] * credits;
+  totalGradeScores += gradePoints[financialManagement] * credits;
+
+  gpa = totalGradeScores / totalPossibleCredits;
+  alert("Your GPA is " + gpa);
+
   }
 
   const styles = StyleSheet.create({
@@ -42,15 +53,18 @@ export default function App() {
     },
   });
 
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.row}>
-        <Text style={{
-          fontWeight: 'bold',
-          fontSize: 24,
-          textAlign: 'center',
-          marginTop: '10%',
-        }}>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            fontSize: 24,
+            textAlign: 'center',
+            marginTop: '10%',
+          }}
+        >
           GPA Calculator
         </Text>
       </View>
@@ -70,6 +84,42 @@ export default function App() {
           style={styles.textInput}
           placeholder="Grade"
           onChangeText={setOb}
+        />
+      </View>
+
+      <View style={styles.row}>
+        <Text style={styles.label}>MobileApps</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Grade"
+          onChangeText={setMobileApps}
+        />
+      </View>
+
+      <View style={styles.row}>
+        <Text style={styles.label}>Digital Marketing</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Grade"
+          onChangeText={setDigitalMarketing}
+        />
+      </View>
+
+      <View style={styles.row}>
+        <Text style={styles.label}>OOAD</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Grade"
+          onChangeText={setOoad}
+        />
+      </View>
+
+      <View style={styles.row}>
+        <Text style={styles.label}>Financial Management</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Grade"
+          onChangeText={setFinancialManagement}
         />
       </View>
 
